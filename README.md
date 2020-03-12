@@ -88,6 +88,7 @@ export PG_PASSWORD=<<postgresql password>>
 
 Gradle is used to compile and build. The exact Gradle and JVM versions that were used to build the system are below.  
 
+```
 ------------------------------------------------------------
 Gradle 6.2.2
 ------------------------------------------------------------
