@@ -63,4 +63,5 @@ To start the ProducerApp, please switch to the bin folder and  execute run_produ
 To start the ConsumerApp, please switch to the bin folder and  execute run_consumer.sh. The my-consumer-env is sourced in to make the OS environment variables available to the ConsumerApp.  
 
 ### Testing
-In the bin folder, you'll find send_signup_request.sh file which uses **curl** to send a test message to the ProducerApp http listener. This sets things in motion.
+In the bin folder, you'll find send_signup_request.sh file which uses **curl** to send a test message to the ProducerApp http listener. This sets things in motion and does the integration testing.
+
