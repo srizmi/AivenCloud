@@ -32,7 +32,7 @@ The following links describe how to set up your Aiven Kafka and Postgresql servi
 
 Please follow the above links for instructions to download the keys and certificates and to generate the required keystore that's used by both the ProducerApp and the ConsumerApp. The ConsumerApp also needs the Postgresql username and password as well. You can retrieve them from the Postgresql link above.
 
-The Postgresql schema contains 
+The ddl folder contains the file **create_schema.sql**  to create the Postgresql schema and the table.   
 
 Both applications store all credentials and certificates in environment variables for security reasons. the bin folder contains template files that need populated before you can run the applications. 
 
