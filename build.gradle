@@ -1,0 +1,41 @@
+plugins {
+    id 'java'
+}
+
+group 'org.shariz'
+version '1.0'
+
+sourceCompatibility = "8"
+targetCompatibility = "8"
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    kafkaVersion = "2.4.0"
+    gsonVersion = "2.8.6"
+    postgresqlVersion = "42.2.5"
+    slf4jVersion = "1.7.5"
+    junitVersion = "4.12"
+}
+dependencies {
+
+    compileOnly "org.projectlombok:lombok:1.18.12"
+    annotationProcessor("org.projectlombok:lombok:1.18.12")
+    compile "org.apache.kafka:kafka-clients:$kafkaVersion"
+    compile "com.google.code.gson:gson:$gsonVersion"
+    compile "org.postgresql:postgresql:$postgresqlVersion"
+    compile "org.slf4j:slf4j-api:$slf4jVersion"
+    compile "org.slf4j:slf4j-log4j12:$slf4jVersion"
+
+    testCompile "junit:junit:$junitVersion"
+}
+
+jar {
+    from {
+        (configurations.runtime).collect {
+            it.isDirectory() ? it : zipTree(it)
+        }
+    }
+}

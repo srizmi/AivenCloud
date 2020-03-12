@@ -1,0 +1,14 @@
+# list of kafka brokers, comma-separated
+export BOOTSTRAP_SERVER_LIST=<<Kafka Bootstrap Server List>>
+
+# truststore location and password
+export SSL_TRUSTSTORE_LOCATION=<<trust-store-file>>
+export SSL_TRUSTSTORE_PASSWORD=<<truststore password>>
+
+# keystore location, password and key password
+export SSL_KEYSTORE_LOCATION=<<keystore file location>>
+export SSL_KEYSTORE_PASSWORD=<<keystore file password>>
+export SSL_KEY_PASSWORD=<<key password>>
+
+# signup message queue
+export SIGNUP_TOPIC=<<kafka topic to publish>>
