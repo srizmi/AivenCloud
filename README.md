@@ -16,8 +16,6 @@ The ProducerApp listens on address http://localhost:8080/api/submit_request for 
 }  
 ```
 
-
-
 ### ConsumerApp
 The ConsumerApp subscribes to the topic the ProducerApp is sending messages to. The received message is deserialized into a Java object.  The ConsumerApp checks to see if the email associated with the request is already registered in the system and if not, persists the request to Postgresql running on the Aiven Cloud. 
 
@@ -33,6 +31,8 @@ The following links describe how to set up your Aiven Kafka and Postgresql servi
 [Getting started with Aiven PostgreSQL](https://help.aiven.io/en/articles/489573-getting-started-with-aiven-postgresql)
 
 Please follow the above links for instructions to download the keys and certificates and to generate the required keystore that's used by both the ProducerApp and the ConsumerApp. The ConsumerApp also needs the Postgresql username and password as well. You can retrieve them from the Postgresql link above.
+
+The Postgresql schema contains 
 
 Both applications store all credentials and certificates in environment variables for security reasons. the bin folder contains template files that need populated before you can run the applications. 
 
@@ -63,4 +63,4 @@ To start the ProducerApp, please switch to the bin folder and  execute run_produ
 To start the ConsumerApp, please switch to the bin folder and  execute run_consumer.sh. The my-consumer-env is sourced in to make the OS environment variables available to the ConsumerApp.  
 
 ### Testing
-In the bin folder, you'll find send_signup_request.sh file which uses **curl** to send a test message to the ProducerApp http listener. 
+In the bin folder, you'll find send_signup_request.sh file which uses **curl** to send a test message to the ProducerApp http listener. This sets things in motion.
