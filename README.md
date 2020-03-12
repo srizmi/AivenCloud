@@ -2,7 +2,7 @@
 
 This project demonstrates utilizing Aiven services to implement a signup request processing system. The demo consists of two components: 
 1. A Kafka Producer (ProducerApp) that spawns an HTTP listener for incoming requests and then publishes them to a topic on Aiven cluster.
-2. A Kafka Consumer that polls a topic on Aiven cluster, and persists the requests to Postgresql running at Aiven. 
+2. A Kafka Consumer (ConsumerApp) that polls a topic on Aiven cluster, and persists the requests to Postgresql running at Aiven. 
 
 The ProducerApp and the ConsumerApp are designed to run as individual micro-services.
 
@@ -40,10 +40,54 @@ Both applications store all credentials and certificates in environment variable
 
 The ProducerApp makes use of environment variables defined in the my-producer-env-template file. Please make a copy of this file, rename it to my-producer-env and change the placeholder values.
 
+**ProducerApp Environment Variables**
+```
+# list of kafka brokers, comma-separated
+export BOOTSTRAP_SERVER_LIST=<<Kafka Bootstrap Server List>>
+
+# truststore location and password
+export SSL_TRUSTSTORE_LOCATION=<<trust-store-file>>
+export SSL_TRUSTSTORE_PASSWORD=<<truststore password>>
+
+# keystore location, password and key password
+export SSL_KEYSTORE_LOCATION=<<keystore file location>>
+export SSL_KEYSTORE_PASSWORD=<<keystore file password>>
+export SSL_KEY_PASSWORD=<<key password>>
+
+# signup message queue
+export SIGNUP_TOPIC=<<kafka topic to publish>>
+```
+
 The ConsumerApp makes use of environment variables defined in the my-consumer-env-template file. Please make a copy of this file, rename it to my-consumer-env and change the placeholder values.
 
-Gradle is used to compile and build. The exact Gradle and JVM versions that were used to build the system are below.  
+**ConsumerApp Environment Variables**
 ```
+# list of kafka brokers, comma-separated
+export BOOTSTRAP_SERVER_LIST=<<Kafka Bootstrap Server List>>
+
+# truststore location and password
+export SSL_TRUSTSTORE_LOCATION=<<trust-store-file>>
+export SSL_TRUSTSTORE_PASSWORD=<<truststore password>>
+
+# keystore location, password and key password
+export SSL_KEYSTORE_LOCATION=<<keystore file location>>
+export SSL_KEYSTORE_PASSWORD=<<keystore file password>>
+export SSL_KEY_PASSWORD=<<key password>>
+
+# signup message queue
+export SIGNUP_TOPIC=<<kafka topic to consume from>>
+
+# ca.pem location
+export CA_CERT_LOCATION=<<ca certification location>>
+
+# postgresql parameters
+export JDBC_URL=<<aiven postgresql jdbc url>>
+export PG_USERNAME=<<postgresql username>>
+export PG_PASSWORD=<<postgresql password>>
+```
+
+Gradle is used to compile and build. The exact Gradle and JVM versions that were used to build the system are below.  
+
 ------------------------------------------------------------
 Gradle 6.2.2
 ------------------------------------------------------------
