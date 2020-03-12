@@ -1,8 +1,10 @@
 # Aiven Cloud Demonstration Application
 
 This project demonstrates utilizing Aiven services to implement a signup request processing system. The demo consists of two components: 
-1. A Kafka Producer (ProducerApp) that spawns an HTTP listener for incoming requests and then publishes it to a topic on Aiven cluster.
-2. A Kafka Consumer that polls a topic on Aiven cluster, and persists the requests to Postgresql running at Aiven.
+1. A Kafka Producer (ProducerApp) that spawns an HTTP listener for incoming requests and then publishes them to a topic on Aiven cluster.
+2. A Kafka Consumer that polls a topic on Aiven cluster, and persists the requests to Postgresql running at Aiven. 
+
+The ProducerApp and the ConsumerApp are designed to run as individual micro-services.
 
 ### ProducerApp
 The ProducerApp listens on address http://localhost:8080/api/submit_request for incoming signup requests. When an HTTP client connects and sends the request as JSON body, the App forwards the request to Kafka for processing. The JSON message is structured as follows:
@@ -17,7 +19,7 @@ The ProducerApp listens on address http://localhost:8080/api/submit_request for 
 ```
 
 ### ConsumerApp
-The ConsumerApp subscribes to the topic the ProducerApp is sending messages to. The received message is deserialized into a Java object.  The ConsumerApp checks to see if the email associated with the request is already registered in the system and if not, persists the request to Postgresql running on the Aiven Cloud. 
+The ConsumerApp subscribes to the topic the ProducerApp is sending messages to. The received JSON message is deserialized into a Java object. The ConsumerApp checks to see if the email associated with the request is already registered in the system and if not, persists the request to Postgresql running on the Aiven Cloud. 
 
 The SQL statements that interact with the Posgresql database are externalized and stored in the resources/sql folder.
  
