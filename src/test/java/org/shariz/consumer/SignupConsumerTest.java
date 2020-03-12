@@ -18,6 +18,7 @@ public class SignupConsumerTest {
 
     private SignupConsumer signupConsumer;
 
+    /*
     @Test
     public void setUp() throws Exception {
         Consumer<String,String> consumer = new MockConsumer(OffsetResetStrategy.EARLIEST);
@@ -25,5 +26,5 @@ public class SignupConsumerTest {
         signupConsumer.subscribe();
     }
 
-
+    */
 }
